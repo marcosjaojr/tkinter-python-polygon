@@ -1,11 +1,12 @@
+''' Polygon Module '''
 from tkinter import Canvas, BOTH, YES, ALL
-
 from MatrixHelpers import MatrixHelpers
 from ColorHelpers import ColorHelpers
 from GeometryStructure import GeometryStructure
 
 
 class Polygon(MatrixHelpers):
+    ''' Generic Polygon Class '''
 
     def __init__(self, root, bg_color='LightGoldenrod1'):
         self.root = root
@@ -19,18 +20,19 @@ class Polygon(MatrixHelpers):
         self.continually_rotate()
 
     def init_data(self):
-        geo_structure = GeometryStructure()
+        self.geo_structure = GeometryStructure()
         self.polygon = self.transpose_matrix(
-            geo_structure.vertices)
+            self.geo_structure.vertices)
 
     def create_canvas(self):
+        ''' Create a canvas where de polygon will be draw '''
         self.canvas = Canvas(self.root, width=400, height=400,
                              background=self.bg_color)
         self.canvas.pack(fill=BOTH, expand=YES)
 
     def draw_polygon(self):
-        geo_structure = GeometryStructure()
-        polygon_points_to_draw_face = geo_structure.faces
+        ''' Draw the polygon based on a geometry structure '''
+        polygon_points_to_draw_face = self.geo_structure.faces
         half_width = self.canvas.winfo_width()/2
         half_height = self.canvas.winfo_height()/2
         self.canvas.delete(ALL)
