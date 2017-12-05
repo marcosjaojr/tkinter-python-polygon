@@ -93,22 +93,3 @@ class GeometryStructure():
         self.vertices = VERTICES
         # self.edges = EDGES
         self.faces = FACES
-
-    def get_faces_normal_vectors(self):
-        ''' Calc normal vector for each face '''
-        normal_vectors = []
-
-        for face in FACES:
-            a_vertice = self.vertices[face[0] - 1]
-            b_vertice = self.vertices[face[1] - 1]
-            c_vertice = self.vertices[face[2] - 1]
-
-            first_vector = [b_vertice[i] - a_vertice[i]
-                            for i in range(len(b_vertice))]
-            second_vector = [c_vertice[i] - a_vertice[i]
-                             for i in range(len(c_vertice))]
-
-            normal_vectors.append(
-                list(numpy.cross(first_vector, second_vector)))
-
-        return normal_vectors

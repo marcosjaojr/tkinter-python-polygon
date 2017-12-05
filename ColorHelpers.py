@@ -1,3 +1,5 @@
+from tkinter import Tk
+
 COLORS = [
     '#00BCD4',
     '#263238',
@@ -23,10 +25,11 @@ COLORS = [
 
 class ColorHelpers():
 
-    def __init__(self):
-        self.colors = COLORS
+    def __init__(self, colors=COLORS):
+        self.colors = colors
 
-    def get_random_color(self):
-        color = self.colors.pop(0)
-        self.colors.append(color)
-        return color
+    def get_color(self, i):
+        return self.colors[i]
+
+    def update_color(self, new_color, position):
+        self.colors[position] = new_color
