@@ -8,7 +8,7 @@ from tkinter import Tk, Tcl
 class Shading(object):
     ''' Polygon's shading class '''
 
-    def __init__(self, polygon, light_source=LightSource(-300, -300, -300)):
+    def __init__(self, polygon, light_source=LightSource(0, -300, -300)):
         self.polygon = polygon
         self.light_source = light_source
         self._apply_shading()
@@ -29,19 +29,13 @@ class Shading(object):
                 reflection_intensity = 0
 
             # Calc new rgb
-            # Apply new rgb
             color = ColorHelpers().get_color(i)
             (r, g, b) = (int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16))
-            nr = int((1+reflection_intensity)*r)
-            if nr > 255:
-                nr = 255
-            ng = int((1+reflection_intensity)*g)
-            if ng > 255:
-                ng = 255
-            nb = int((1+reflection_intensity)*b)
-            if nb > 255:
-                nb = 255
+            nr = int(reflection_intensity*r)
+            ng = int(reflection_intensity*g)
+            nb = int(reflection_intensity*b)
 
+            # Apply new rgb
             new_color = "#%0.2x%0.2x%0.2x" % (nr, ng, nb)
             ColorHelpers().update_color(new_color, i)
             i += 1

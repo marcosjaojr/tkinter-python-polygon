@@ -16,7 +16,7 @@ class Polygon(MatrixHelpers):
         self.create_canvas()
         self.polygon = self.rotate_along_x(0.5, self.polygon)
         self.polygon = self.rotate_along_y(0.7, self.polygon)
-        self.polygon = self.rotate_along_z(1.5, self.polygon)
+    #    self.polygon = self.rotate_along_z(1.5, self.polygon)
         self.draw_polygon()
         self.continually_rotate()
 
